@@ -1,0 +1,31 @@
+{
+  "name": "jcn",
+  "version": "0.1.0",
+  "description": "JustCoded command line tool",
+  "preferGlobl": true,
+  "bin": {
+    "jcn": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SidKH/jcn.git"
+  },
+  "keywords": [
+    "justcoded",
+    "jcn",
+    "jc"
+  ],
+  "author": "Alexander Sidorenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SidKH/jcn/issues"
+  },
+  "homepage": "https://github.com/SidKH/jcn#readme",
+  "dependencies": {
+    "inquirer": "^0.11.0",
+    "shelljs": "^0.5.3"
+  }
+}
