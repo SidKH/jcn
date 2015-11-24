@@ -14,7 +14,6 @@ module.exports = function () {
             branch: 'master',
             exec: function () {
               exec('npm install');
-              exec('gulp');
             }
           }
         },
@@ -45,6 +44,10 @@ module.exports = function () {
   inquirer.prompt(qTypes, commands);
 
   function commands(info) {
+    if (!info.type) {
+      console.log('Still in maintenance, sorry');
+      return;
+    }
     exec('git clone ' + info.type.repo + ' ./');
     exec('rm -rf .git');
     if (info.repo) {
