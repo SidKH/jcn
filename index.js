@@ -1,4 +1,7 @@
 #! /usr/bin/env node
+
+// Init shell module
 require('shelljs/global');
-var inquirer = require("inquirer");
-exec('echo "Hello World"');
+
+// Init app modules
+require('./modules/starters')();
