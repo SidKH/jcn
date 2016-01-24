@@ -19,7 +19,13 @@ module.exports = function () {
         },
         {
           name: 'Markup',
-          value: false
+          value: {
+            repo: 'https://github.com/SidKH/markup-starter',
+            branch: 'markup',
+            exec: function () {
+              exec('npm install');
+            }
+          }
         }
       ]
     },
