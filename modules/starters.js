@@ -1,5 +1,6 @@
 var inquirer = require('inquirer'),
-  colors = require('colors');
+  colors = require('colors'),
+  shell = require('shelljs');
 
 colors.setTheme({
   info: ['white', 'bgBlack'],
@@ -23,23 +24,25 @@ module.exports = function () {
         {
           name: 'Angular',
           value: {
+            slug: 'angular',
             repo: 'https://github.com/SidKH/angular-starter-kit.git',
             branch: 'master',
             exec: function () {
               console.log('Installing Npm and Bower dependencies'.info);
-              exec('npm install');
+              shell.exec('npm install');
               logComplete();
             }
           }
         },
         {
-          name: 'Markup',
+          name: 'Skeleton',
           value: {
+            slug: 'skeleton',
             repo: 'https://github.com/SidKH/markup-starter',
-            branch: 'markup',
+            branch: 'master',
             exec: function () {
               console.log('Installing Npm and Bower dependencies'.info);
-              exec('npm install');
+              shell.exec('npm install');
               logComplete();
             }
           }
@@ -47,9 +50,30 @@ module.exports = function () {
       ]
     },
     {
-      message: 'Type project repository (Bitbucket JustCoded)',
+      message: 'Are you a markuper',
+      type: 'list',
+      name: 'isMarkup',
+      choices: [
+        {
+          name:'Yes',
+          value: true
+        },
+        {
+          name: 'No',
+          value: false
+        }
+      ],
+      when: function (answers) {
+        return answers.type.slug === 'skeleton';
+      }
+    },
+    {
+      message: 'Type new project repository url (Default: no repository)',
       type: 'input',
-      name: 'repo'
+      name: 'repo',
+      when: function (answers) {
+        return !answers.isMarkup;
+      }
     },
     {
       message: function (answers) {
@@ -71,18 +95,22 @@ module.exports = function () {
       console.log('Still in maintenance, sorry'.red);
       return;
     }
+    if (info.isMarkup) {
+      shell.exec('mkdir markup');
+      shell.cd('markup');
+    }
     console.log('Getting starter files'.info);
-    exec('git clone ' + info.type.repo + ' ./');
+    shell.exec('git clone ' + info.type.repo + ' ./');
     logComplete();
-    exec('rm -rf .git');
+    shell.exec('rm -rf .git');
     if (info.repo) {
       info.branch = info.branch || 'master';
       console.log('Create initial commit and push it into repository'.info);
-      exec('git init && git add . && git commit -m "Init Starter Kit"');
+      shell.exec('git init && git add . && git commit -m "Init Starter Kit"');
       logComplete();
-      exec('git remote add origin ' + info.repo);
+      shell.exec('git remote add origin ' + info.repo);
       console.log('Pushing the code to the repository'.info);
-      exec('git push origin ' + info.branch);
+      shell.exec('git push origin ' + info.branch);
       logComplete();
     }
     info.type.exec && info.type.exec();
