@@ -50,7 +50,7 @@ module.exports = function () {
       ]
     },
     {
-      message: 'Are you a markuper',
+      message: 'Do you need markup starter?',
       type: 'list',
       name: 'isMarkup',
       choices: [
