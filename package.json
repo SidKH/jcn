@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SidKH/jcn.git"
+    "url": "git+https://github.com/volodymyrl/jcn.git"
   },
   "keywords": [
     "justcoded",
@@ -21,9 +21,9 @@
   "author": "Alexander Sidorenko",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SidKH/jcn/issues"
+    "url": "https://github.com/volodymyrl/jcn/issues"
   },
-  "homepage": "https://github.com/SidKH/jcn#readme",
+  "homepage": "https://github.com/volodymyrl/jcn#readme",
   "dependencies": {
     "colors": "^1.1.2",
     "inquirer": "^0.11.0",

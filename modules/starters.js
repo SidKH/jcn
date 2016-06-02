@@ -38,7 +38,7 @@ module.exports = function () {
           name: 'Skeleton',
           value: {
             slug: 'skeleton',
-            repo: 'https://github.com/SidKH/markup-starter',
+            repo: 'https://github.com/volodymyrl/markup-starter',
             branch: 'master',
             exec: function () {
               console.log('Installing Npm and Bower dependencies'.info);
